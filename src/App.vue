@@ -1,32 +1,50 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!--<div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div>-->
+    <nav-bar v-if="this.$router.currentRoute.name !== 'Login'" />
     <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Navbar from './components/Navbar'
+export default {
+  components: {
+    navBar: Navbar
+  },
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  mounted(){
+    console.log(this.$router.currentRoute)
   }
 }
+</script>
+
+<style lang="scss">
+
+html{
+    font-size: 62.5%; //1rem = 10px
+
+    @media only screen and (max-width: 500px){
+        font-size: 80%;
+    }
+}
+
+body{
+  padding: 1.3rem 2rem;
+
+  @media only screen and (max-width: 500px){
+    padding: 5px 0;
+  }
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Gilroy', sans-serif;
+}
+
 </style>
