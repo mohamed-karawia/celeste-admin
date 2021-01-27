@@ -15,11 +15,15 @@ export default {
 
 <style lang="scss" scoped>
 
+@import "../sass/global.scss";
+
+
 .container{
+  @include container;
+}
 
-  width: 100%;
-  height: 100vh;
-
+h1{
+  color: #fff;
 }
 
 </style>

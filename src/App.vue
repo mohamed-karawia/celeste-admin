@@ -15,10 +15,6 @@ export default {
   components: {
     navBar: Navbar
   },
-
-  mounted(){
-    console.log(this.$router.currentRoute)
-  }
 }
 </script>
 
@@ -33,6 +29,7 @@ html{
 }
 
 body{
+  overflow-x: hidden;
   padding: 1.3rem 2rem;
 
   @media only screen and (max-width: 500px){

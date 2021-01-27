@@ -2,20 +2,37 @@
     <nav>
        <div class="nav--logo" @click="$router.push('/')" />  
        <ul class="nav--list">
-           <li class="nav--list__item"><router-link to="/products">PRODUCTS</router-link></li>
+           <li class="nav--list__item">
+               <router-link 
+               :to="{path: '/products', query:{
+                   category: this.$store.getters.categories[0]._id,
+                   page: 1,
+                   sort: 1,
+                   order: 1
+                   }}">PRODUCTS</router-link>
+               </li>
            <li class="nav--list__item"><router-link to="/categories">CATEGORIES</router-link></li>
            <li class="nav--list__item"><router-link to="/addproduct">ADD PRODUCT</router-link></li>
            <li class="nav--list__item"><router-link to="/users">USERS</router-link></li>
+           <li class="nav--list__item" @click="$store.commit('logout')"><router-link to="/login">LOGOUT</router-link></li>
        </ul>
        <svg class="menu__icon" @click="showMobileMenu = !showMobileMenu">
             <use xlink:href="../assets/sprite.svg#icon-menu"></use>
         </svg>
         <div class="mobile--menu" v-if="showMobileMenu">
         <ul class="mobile--nav--list">
-           <li class="mobile--nav--list__item" @click="showMobileMenu = false"><router-link to="/products">PRODUCTS</router-link></li>
+           <li class="mobile--nav--list__item" @click="showMobileMenu = false"><router-link  
+                   :to="{path: '/products', query:{
+                   category: this.$store.getters.categories[0]._id,
+                   page: 1,
+                   sort: 1,
+                   order: 1
+                   }}">PRODUCTS</router-link></li>
            <li class="mobile--nav--list__item" @click="showMobileMenu = false"><router-link to="/categories">CATEGORIES</router-link></li>
            <li class="mobile--nav--list__item" @click="showMobileMenu = false"><router-link to="/addproduct">ADD PRODUCT</router-link></li>
            <li class="mobile--nav--list__item" @click="showMobileMenu = false"><router-link to="/users">USERS</router-link></li>
+           <li class="mobile--nav--list__item" @click="showMobileMenu = false"><router-link to="/users">USERS</router-link></li>
+
        </ul>
         </div>      
     </nav>
@@ -103,6 +120,7 @@ nav{
     top: 9vh;
     display: flex;
     justify-content: center;
+    z-index: 999;
 
      @media only screen and (min-width: 501px){
         display: none;

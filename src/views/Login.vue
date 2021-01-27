@@ -20,13 +20,13 @@
                 <div class="input-box">
                     <label for="email">Password : </label>
                     <input
-                    type="passowrd"
+                    type="password"
                     id="password"
                     v-model="password">
                 </div>
 
                 <div class="submit">
-                    <button>Login</button>
+                    <button @click="login">Login</button>
                 </div>
 
             </form>
@@ -42,6 +42,17 @@ export default {
             email: '',
             password: ''
         }
+    },
+    
+    methods: {
+
+        login(){
+        const payload = {
+            email : this.email,
+            password : this.password
+        }
+         this.$store.dispatch('login', payload)
+    }
     }
 }
 </script>
@@ -101,7 +112,7 @@ export default {
 
         button{
             @include button;
-            width: 50%;
+            min-width: 50%;
             background-color: rgba(255, 255, 255, 0.603);
             color: black;
         }
